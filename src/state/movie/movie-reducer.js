@@ -23,7 +23,11 @@ const movie = (state = initialState, action) => {
     case movieActionTypes.LOAD_MOVIES_SUCCEEDED:
       return {
         ...state,
-        movies: action.data.movies
+        movies: action.data.movies,
+        page: {
+          ...state.page,
+          totalElements: action.data.movies.length,
+        }
       };
     case movieActionTypes.LOAD_MOVIES_FAILED:
       return {
