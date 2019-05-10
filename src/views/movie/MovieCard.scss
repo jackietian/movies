@@ -1,0 +1,30 @@
+.card-container {
+    height: 5rem;
+    border-radius: 2px;
+    border: 1px solid #000;
+    position: relative;
+    padding: 0.5rem;
+    cursor: pointer;
+
+    &:hover {
+        -webkit-box-shadow: -3px 6px 20px 1px rgba(0, 0, 0, 0.48);
+        -moz-box-shadow: -3px 6px 20px 1px rgba(0, 0, 0, 0.48);
+        box-shadow: -3px 6px 20px 1px rgba(0, 0, 0, 0.48);
+    }
+
+    .card-container__title {
+        font-size: 1rem;
+    }
+
+    .card-container__year {
+        position: absolute;
+        right: 1rem;
+        bottom: 0.5rem;
+    }
+
+    .card-container__star {
+        position: absolute;
+        right: 1rem;
+        top: 1rem;
+    }
+}

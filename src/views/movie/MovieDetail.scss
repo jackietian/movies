@@ -1,0 +1,16 @@
+.movie-detail {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    .movie-detail__title {
+        font-size: 2rem;
+    }
+
+    .movie-detail__type {
+        font-size: 0.8rem;
+    }
+
+    .movie-detail__image {
+        width: 15rem;
+    }
+}

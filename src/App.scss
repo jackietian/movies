@@ -1,0 +1,16 @@
+@import 'reset-css';
+
+main {
+    display: flex;
+    flex: 0 0 100%;
+    & > section {
+        padding: 1rem;
+        width: 100%;
+        &:first-of-type {
+            width: 50rem;
+            border-right: 1px solid #000;
+            height: 100vh;
+            overflow-y: scroll;
+        }
+    }
+}
