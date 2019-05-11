@@ -1,6 +1,6 @@
 import movieActionTypes from "./movie-action-types";
 
-const initialState = {
+export const initialState = {
   movies: [],
   searchText: "sydney",
   currentMovie: null,

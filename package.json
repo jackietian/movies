@@ -10,16 +10,20 @@
     "react-dom": "^16.8.6",
     "react-icons": "^3.7.0",
     "react-redux": "^7.0.3",
-    "react-scripts": "^3.0.1",
     "redux": "^4.0.1",
     "redux-logger": "^3.0.6",
     "redux-thunk": "^2.3.0",
     "reset-css": "^4.0.1"
   },
+  "devDependencies": {
+    "enzyme": "^3.9.0",
+    "enzyme-adapter-react-16": "^1.12.1",
+    "react-scripts": "^3.0.0"
+  },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "jest test",
+    "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {

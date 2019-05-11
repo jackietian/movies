@@ -112,7 +112,7 @@ class MovieList extends Component {
                   : ""
               }
             >
-              <MovieCard movie={movie} />
+              <MovieCard {...movie} />
             </li>
           ))}
         </ul>
