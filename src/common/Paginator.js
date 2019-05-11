@@ -1,8 +1,17 @@
 import React, { Component } from "react";
+import PropTypes from 'prop-types';
 import { TiChevronLeftOutline, TiChevronRightOutline } from "react-icons/ti";
 import "./Paginator.scss";
 
 class Paginator extends Component {
+  static propTypes = {
+    currentPage: PropTypes.number,
+    totalPages: PropTypes.number,
+    size: PropTypes.number,
+    totalElements: PropTypes.number,
+    onChangePage: PropTypes.func,
+  }
+
   isPrevDisabled = () => {
     const { currentPage } = this.props;
     return currentPage === 0;
@@ -29,6 +38,7 @@ class Paginator extends Component {
       <section className="paginator">
         <button
           className="icon-button"
+          data-test="prev-btn"
           onClick={this.handleClickPrevpage}
           disabled={this.isPrevDisabled()}
         >
@@ -40,6 +50,7 @@ class Paginator extends Component {
         </span>
         <button
           className="icon-button"
+          data-test="next-btn"
           onClick={this.handleClickNextpage}
           disabled={this.isNextDisabled()}
         >

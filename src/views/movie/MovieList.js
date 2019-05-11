@@ -3,7 +3,6 @@ import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import Paginator from "../../common/Paginator";
-import TextInput from "../../common/TextInput";
 import MovieCard from "./MovieCard";
 import {
   loadMovies,
@@ -94,7 +93,8 @@ class MovieList extends Component {
     const { searchText, page, currentMovie } = this.props;
     return (
       <>
-        <TextInput
+        <input 
+          type="text"
           className='searchInput'
           value={searchText}
           onChange={this.handleSearchTextChange}
