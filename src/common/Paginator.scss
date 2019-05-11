@@ -2,7 +2,8 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    width: 100%;
+    width: 93%;
+    margin: 1rem;
 
     .icon-button {
         width: 2rem;
@@ -20,6 +21,7 @@
         &:disabled {
             box-shadow: none;
             cursor: not-allowed;
+            color: #ddd;
         }
 
         svg {

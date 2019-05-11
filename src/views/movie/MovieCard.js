@@ -4,7 +4,7 @@ import './MovieCard.scss';
 
 const MovieCard = props => {
   const {
-    movie: { Title, Year }
+    movie: { Title, Year },
   } = props;
   return (
     <div className='card-container'>
@@ -18,7 +18,7 @@ MovieCard.propTypes = {
     movie: PropTypes.shape({
         Title: PropTypes.string,
         Year: PropTypes.string,
-    })
+    }),
 }
 
 export default MovieCard;

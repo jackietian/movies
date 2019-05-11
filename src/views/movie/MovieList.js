@@ -17,6 +17,7 @@ class MovieList extends Component {
   static propTypes = {
     movies: PropTypes.array.isRequired,
     searchText: PropTypes.string.isRequired,
+    currentMovie: PropTypes.object,
     page: PropTypes.shape({
       size: PropTypes.number,
       totalElements: PropTypes.number,
@@ -90,10 +91,11 @@ class MovieList extends Component {
   };
 
   render() {
-    const { searchText, page } = this.props;
+    const { searchText, page, currentMovie } = this.props;
     return (
       <>
         <TextInput
+          className='searchInput'
           value={searchText}
           onChange={this.handleSearchTextChange}
           onKeyDown={this.handleKeyDown}
@@ -101,7 +103,15 @@ class MovieList extends Component {
 
         <ul className="card-list">
           {this.loadPaginatedMovies().map(movie => (
-            <li key={movie.imdbID} onClick={() => this.handleClickCard(movie)}>
+            <li
+              key={movie.imdbID}
+              onClick={() => this.handleClickCard(movie)}
+              className={
+                currentMovie && currentMovie.imdbID === movie.imdbID
+                  ? "selected"
+                  : ""
+              }
+            >
               <MovieCard movie={movie} />
             </li>
           ))}
@@ -117,7 +127,8 @@ class MovieList extends Component {
 const mapStateToProps = state => ({
   movies: state.movie.movies,
   searchText: state.movie.searchText,
-  page: state.movie.page
+  page: state.movie.page,
+  currentMovie: state.movie.currentMovie
 });
 
 const mapDispatchToProps = dispatch => ({

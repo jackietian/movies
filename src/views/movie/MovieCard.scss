@@ -1,10 +1,14 @@
 .card-container {
     height: 5rem;
     border-radius: 2px;
-    border: 1px solid #000;
+    border-bottom: 1px solid #fff;
     position: relative;
     padding: 0.5rem;
     cursor: pointer;
+
+    &.active {
+        background: #4cb6cb;
+    }
 
     &:hover {
         -webkit-box-shadow: -3px 6px 20px 1px rgba(0, 0, 0, 0.48);

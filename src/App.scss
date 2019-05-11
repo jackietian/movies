@@ -3,12 +3,12 @@
 main {
     display: flex;
     flex: 0 0 100%;
+    color: #545a5f;
     & > section {
-        padding: 1rem;
         width: 100%;
         &:first-of-type {
             width: 50rem;
-            border-right: 1px solid #000;
+            background-color: #e0eaec;
             height: 100vh;
             overflow-y: scroll;
         }

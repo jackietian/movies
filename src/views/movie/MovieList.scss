@@ -1,5 +1,17 @@
+.searchInput {
+    font-size: 1rem;
+    line-height: 2rem;
+    width: 89%;
+    padding: 0 0.5rem;
+    margin: 1rem;
+}
+
 .card-list {
+    margin: 1rem 0;
+
     li {
-        margin: 0.25rem;
+        &.selected {
+            background: #4cb6cb;
+        }
     }
 }
