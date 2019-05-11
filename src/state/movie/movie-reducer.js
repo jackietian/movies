@@ -5,12 +5,12 @@ const initialState = {
   searchText: "sydney",
   currentMovie: null,
   page: {
-    size: 10,
+    size: 5,
     totalElements: 0,
     totalPages: 0,
     currentPage: 0
   },
-  err: ''
+  err: ""
 };
 
 const movie = (state = initialState, action) => {
@@ -27,6 +27,7 @@ const movie = (state = initialState, action) => {
         page: {
           ...state.page,
           totalElements: action.data.movies.length,
+          totalPages: Math.ceil(action.data.movies.length / state.page.size),
         }
       };
     case movieActionTypes.LOAD_MOVIES_FAILED:
@@ -39,6 +40,14 @@ const movie = (state = initialState, action) => {
       return {
         ...state,
         currentMovie: action.data.movie
+      };
+    case movieActionTypes.CHANGE_PAGE:
+      return {
+        ...state,
+        page: {
+          ...state.page,
+          currentPage: action.data.nextPage
+        }
       };
     default:
       return state;

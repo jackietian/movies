@@ -8,14 +8,27 @@ import MovieCard from "./MovieCard";
 import {
   loadMovies,
   changeSearchText,
-  selectCurrentMovie
+  selectCurrentMovie,
+  changePage
 } from "../../state/movie/movie-action-creators";
 import "./MovieList.scss";
 
 class MovieList extends Component {
   static propTypes = {
     movies: PropTypes.array.isRequired,
-    searchText: PropTypes.string.isRequired
+    searchText: PropTypes.string.isRequired,
+    page: PropTypes.shape({
+      size: PropTypes.number,
+      totalElements: PropTypes.number,
+      totalPages: PropTypes.number,
+      currentPage: PropTypes.number
+    }),
+    actions: PropTypes.shape({
+      loadMovies: PropTypes.func,
+      changeSearchText: PropTypes.func,
+      selectCurrentMovie: PropTypes.func,
+      changePage: PropTypes.func
+    })
   };
 
   componentDidMount() {
@@ -40,38 +53,62 @@ class MovieList extends Component {
     loadMovies(params);
   };
 
-  handleKeyDown = (e) => {
+  handleKeyDown = e => {
     console.log(e.key);
-    if (e.key === 'Enter') {
+    if (e.key === "Enter") {
       this.handleSearch();
     }
-  }
+  };
 
-  handleClickCard = (movie) => {
-    const {actions: { selectCurrentMovie }} = this.props;
+  handleClickCard = movie => {
+    const {
+      actions: { selectCurrentMovie }
+    } = this.props;
     selectCurrentMovie(movie);
-  }
+  };
+
+  handlePageChange = nextPage => {
+    const {
+      actions: { changePage }
+    } = this.props;
+    changePage(nextPage);
+  };
+
+  loadPaginatedMovies = () => {
+    const {
+      movies,
+      page: { size, currentPage }
+    } = this.props;
+    return movies.slice(size * currentPage, size * currentPage + size);
+  };
+
+  showPaginator = () => {
+    const {
+      page: { totalElements, size }
+    } = this.props;
+    return totalElements > size;
+  };
 
   render() {
-    const { movies, searchText } = this.props;
+    const { searchText, page } = this.props;
     return (
       <>
-        <TextInput 
-          value={searchText} 
-          onChange={this.handleSearchTextChange} 
+        <TextInput
+          value={searchText}
+          onChange={this.handleSearchTextChange}
           onKeyDown={this.handleKeyDown}
         />
-        
+
         <ul className="card-list">
-          {movies.map(movie => (
-            <li 
-              key={movie.imdbID} 
-              onClick={() => this.handleClickCard(movie)}>
-                <MovieCard movie={movie} />
+          {this.loadPaginatedMovies().map(movie => (
+            <li key={movie.imdbID} onClick={() => this.handleClickCard(movie)}>
+              <MovieCard movie={movie} />
             </li>
           ))}
         </ul>
-        <Paginator />
+        {this.showPaginator() && (
+          <Paginator onChangePage={this.handlePageChange} {...page} />
+        )}
       </>
     );
   }
@@ -79,7 +116,8 @@ class MovieList extends Component {
 
 const mapStateToProps = state => ({
   movies: state.movie.movies,
-  searchText: state.movie.searchText
+  searchText: state.movie.searchText,
+  page: state.movie.page
 });
 
 const mapDispatchToProps = dispatch => ({
@@ -88,6 +126,7 @@ const mapDispatchToProps = dispatch => ({
       loadMovies,
       changeSearchText,
       selectCurrentMovie,
+      changePage
     },
     dispatch
   )

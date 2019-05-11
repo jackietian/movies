@@ -1,41 +1,53 @@
 import React, { Component } from "react";
-import { connect } from "react-redux";
 import { TiChevronLeftOutline, TiChevronRightOutline } from "react-icons/ti";
 import "./Paginator.scss";
 
 class Paginator extends Component {
-  handleClickPrevpage = () => {};
+  isPrevDisabled = () => {
+    const { currentPage } = this.props;
+    return currentPage === 0;
+  };
 
-  handleClickNextpage = () => {};
+  isNextDisabled = () => {
+    const { currentPage, totalPages } = this.props;
+    return currentPage + 1 === totalPages;
+  };
+
+  handleClickPrevpage = () => {
+    const { currentPage, onChangePage } = this.props;
+    onChangePage(currentPage - 1);
+  };
+
+  handleClickNextpage = () => {
+    const { currentPage, onChangePage } = this.props;
+    onChangePage(currentPage + 1);
+  };
 
   render() {
-    const {
-      page: { totalElements, currentPage }
-    } = this.props;
+    const { totalElements, currentPage } = this.props;
     return (
       <section className="paginator">
-        <TiChevronLeftOutline
+        <button
           className="icon-button"
           onClick={this.handleClickPrevpage}
-        />
+          disabled={this.isPrevDisabled()}
+        >
+          <TiChevronLeftOutline />
+        </button>
         <span className="paginator__info">
           <div>Page {currentPage + 1} </div>
           <div>{totalElements} results</div>
         </span>
-        <TiChevronRightOutline
+        <button
           className="icon-button"
           onClick={this.handleClickNextpage}
-        />
+          disabled={this.isNextDisabled()}
+        >
+          <TiChevronRightOutline />
+        </button>
       </section>
     );
   }
 }
 
-const mapStateToProps = state => ({
-  page: state.movie.page
-});
-
-export default connect(
-  mapStateToProps,
-  null
-)(Paginator);
+export default Paginator;

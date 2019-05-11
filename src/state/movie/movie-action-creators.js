@@ -31,3 +31,8 @@ export const selectCurrentMovie = movie => ({
   type: movieActionTypes.SELECT_MOVIE,
   data: { movie }
 });
+
+export const changePage = (nextPage) => ({
+  type: movieActionTypes.CHANGE_PAGE,
+  data: { nextPage }
+});
