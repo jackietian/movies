@@ -5,7 +5,7 @@ const initialState = {
   searchText: "sydney",
   currentMovie: null,
   page: {
-    size: 5,
+    size: 10,
     totalElements: 0,
     totalPages: 0,
     currentPage: 0
@@ -24,6 +24,7 @@ const movie = (state = initialState, action) => {
       return {
         ...state,
         movies: action.data.movies,
+        currentMovie: null,
         page: {
           ...state.page,
           totalElements: action.data.movies.length,
@@ -34,6 +35,7 @@ const movie = (state = initialState, action) => {
       return {
         ...state,
         movies: [],
+        currentMovie: null,
         error: action.data.err
       };
     case movieActionTypes.SELECT_MOVIE:
