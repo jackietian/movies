@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import "./MovieDetail.scss";
 
 const MovieDetail = props => {
-  if(!props.currentMovie) return '';
+  if (!props.currentMovie) return "";
 
   const {
     currentMovie: { Title, Poster, Type }
@@ -12,10 +12,15 @@ const MovieDetail = props => {
   return (
     <section className="movie-detail">
       <div>
-        <h1 className="movie-detail__title">{Title}</h1>
-        <p className="movie-detail__type">{Type}</p>
+        <h1 className="movie-detail__title" tabIndex="0">{Title}</h1>
+        <p className="movie-detail__type" tabIndex="1">{Type}</p>
       </div>
-      <img className="movie-detail__image" src={Poster} alt={Title} />
+      <img
+        className="movie-detail__image"
+        tabIndex="2"
+        src={Poster}
+        alt={`Poster for movie: ${Title}`}
+      />
     </section>
   );
 };

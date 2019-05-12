@@ -5,7 +5,7 @@ export const initialState = {
   searchText: "sydney",
   currentMovie: null,
   page: {
-    size: 10,
+    size: 5,
     totalElements: 0,
     totalPages: 0,
     currentPage: 0

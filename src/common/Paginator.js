@@ -41,6 +41,7 @@ class Paginator extends Component {
           data-test="prev-btn"
           onClick={this.handleClickPrevpage}
           disabled={this.isPrevDisabled()}
+          aria-label="Go to previous page"
         >
           <TiChevronLeftOutline />
         </button>
@@ -53,6 +54,7 @@ class Paginator extends Component {
           data-test="next-btn"
           onClick={this.handleClickNextpage}
           disabled={this.isNextDisabled()}
+          aria-label="Go to next page"
         >
           <TiChevronRightOutline />
         </button>

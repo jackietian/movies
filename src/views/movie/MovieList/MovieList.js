@@ -92,6 +92,8 @@ class MovieList extends Component {
           onChange={this.handleSearchTextChange}
           onKeyDown={this.handleKeyDown}
           autoFocus
+          placeholder="search movie by keyword"
+          tabindex="0"
         />
 
         <ul className="card-list">
@@ -99,6 +101,7 @@ class MovieList extends Component {
           {this.loadPaginatedMovies().map((movie, index) => (
             <li
               key={index}
+              tabIndex={index + 1}
               onClick={() => this.handleClickCard(movie)}
               className={
                 currentMovie && currentMovie.imdbID === movie.imdbID && "selected"
