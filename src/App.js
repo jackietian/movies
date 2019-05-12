@@ -1,10 +1,9 @@
 import React from "react";
-import PropTypes from 'prop-types';
 import MovieListContainer from "./views/movie/MovieList/MovieListContainer";
 import MovieDetailContainer from "./views/movie/MovieDetail/MovieDetailContainer";
 import "./App.scss";
 
-const App = (props) => (
+const App = () => (
   <main>
     <section>
       <MovieListContainer />
@@ -14,9 +13,5 @@ const App = (props) => (
     </section>
   </main>
 );
-
-App.propTypes = {
-  currentMovie: PropTypes.object
-}
 
 export default App;
