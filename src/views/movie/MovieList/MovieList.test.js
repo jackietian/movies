@@ -13,7 +13,7 @@ const setup = props => {
   };
 };
 
-describe("MovMovieListieCard component", () => {
+describe("MovieList component", () => {
   it("should display search box", () => {
     const props = {
       movies: [1, 2, 3],
