@@ -12,8 +12,12 @@ const MovieDetail = props => {
   return (
     <section className="movie-detail">
       <div>
-        <h1 className="movie-detail__title" tabIndex="0">{Title}</h1>
-        <p className="movie-detail__type" tabIndex="1">{Type}</p>
+        <h1 className="movie-detail__title" tabIndex="0">
+          {Title}
+        </h1>
+        <p className="movie-detail__type" tabIndex="1">
+          {Type}
+        </p>
       </div>
       <img
         className="movie-detail__image"
@@ -26,9 +30,11 @@ const MovieDetail = props => {
 };
 
 MovieDetail.propTypes = {
-  Title: PropTypes.string,
-  Type: PropTypes.string,
-  Poster: PropTypes.string
+  currentMovie: PropTypes.shape({
+    Title: PropTypes.string,
+    Type: PropTypes.string,
+    Poster: PropTypes.string
+  })
 };
 
 export default MovieDetail;
