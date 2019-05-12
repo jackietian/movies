@@ -13,7 +13,7 @@ A react app that can list and filter movies through omdbapi
     - strong color contrast between background and font color
 
 
-Notes: To show to paginator, I have reset to page size to 5, coz I cannot find any response that can return more than 10 results.
+Notes: To show the paginator, I reset page size to 5, coz I cannot find any response that can return more than 10 results.
 
 ### Things to do:
     - responsive design
