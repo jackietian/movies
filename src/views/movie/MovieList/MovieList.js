@@ -1,15 +1,7 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-import { connect } from "react-redux";
-import { bindActionCreators } from "redux";
-import Paginator from "../../common/Paginator";
-import MovieCard from "./MovieCard";
-import {
-  loadMovies,
-  changeSearchText,
-  selectCurrentMovie,
-  changePage
-} from "../../state/movie/movie-action-creators";
+import Paginator from "../../../common/Paginator";
+import MovieCard from "../MovieCard/MovieCard";
 import "./MovieList.scss";
 
 class MovieList extends Component {
@@ -54,7 +46,6 @@ class MovieList extends Component {
   };
 
   handleKeyDown = e => {
-    console.log(e.key);
     if (e.key === "Enter") {
       this.handleSearch();
     }
@@ -90,7 +81,8 @@ class MovieList extends Component {
   };
 
   render() {
-    const { searchText, page, currentMovie } = this.props;
+    const { movies, searchText, page, currentMovie } = this.props;
+
     return (
       <>
         <input 
@@ -99,17 +91,17 @@ class MovieList extends Component {
           value={searchText}
           onChange={this.handleSearchTextChange}
           onKeyDown={this.handleKeyDown}
+          autoFocus
         />
 
         <ul className="card-list">
-          {this.loadPaginatedMovies().map(movie => (
+          { movies.length === 0 && <li>no resuls found</li>}
+          {this.loadPaginatedMovies().map((movie, index) => (
             <li
-              key={movie.imdbID}
+              key={index}
               onClick={() => this.handleClickCard(movie)}
               className={
-                currentMovie && currentMovie.imdbID === movie.imdbID
-                  ? "selected"
-                  : ""
+                currentMovie && currentMovie.imdbID === movie.imdbID && "selected"
               }
             >
               <MovieCard {...movie} />
@@ -117,33 +109,14 @@ class MovieList extends Component {
           ))}
         </ul>
         {this.showPaginator() && (
-          <Paginator onChangePage={this.handlePageChange} {...page} />
+          <Paginator onChangePage={this.handlePageChange} {...page}/>
         )}
       </>
     );
   }
 }
 
-const mapStateToProps = state => ({
-  movies: state.movie.movies,
-  searchText: state.movie.searchText,
-  page: state.movie.page,
-  currentMovie: state.movie.currentMovie
-});
+export default MovieList;
 
-const mapDispatchToProps = dispatch => ({
-  actions: bindActionCreators(
-    {
-      loadMovies,
-      changeSearchText,
-      selectCurrentMovie,
-      changePage
-    },
-    dispatch
-  )
-});
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(MovieList);
+

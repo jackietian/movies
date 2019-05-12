@@ -6,7 +6,7 @@ const setup = (title, year) => {
   const component = shallow(<MovieCard Title={title} Year={year} />);
 
   return {
-    component: component
+    component,
   };
 };
 
@@ -18,7 +18,7 @@ describe("MovieCard component", () => {
     );
   });
 
-  it("should display title", () => {
+  it("should display year", () => {
     const { component } = setup("", "2019");
     expect(component.find(".card-container__year").text()).toMatch(
         "2019"
