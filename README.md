@@ -9,7 +9,7 @@ A react app that can list and filter movies through omdbapi
     - semantic html elemnts
     - arial label for button
     - autofocus and handle key enter for input textbox
-    - tabindex
+    - tabIndex
     - strong color contrast between background and font color
 
 
