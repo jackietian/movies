@@ -7,7 +7,7 @@ A react app that can list and filter movies through omdbapi
 - for testing, tests are done for each unit component and reducer.
 - for accessibility, here are the things done: 
     - semantic html elemnts
-    - arial label for image
+    - arial label for button
     - autofocus and handle key enter for input textbox
     - tabindex
     - strong color contrast between background and font color
