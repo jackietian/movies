@@ -15,12 +15,12 @@ A react app that can list and filter movies through omdbapi
 
 Notes: To show to paginator, I have reset to page size to 5, coz I cannot find any response that can return more than 10 results.
 
-###Things to do:
+### Things to do:
     - responsive design
     - support multiple browsers, right now only tested on latest chrome
 
-### start
+## start
 ```npm install && npm start```
 
-### test
+## test
 ```npm test```
